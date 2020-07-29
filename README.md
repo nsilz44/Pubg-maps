@@ -1,2 +1,2 @@
 # Pubg-maps
-PUBG map marking system
+Simple PUBG map strategy website 
