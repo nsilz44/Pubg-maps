@@ -1,4 +1,5 @@
 from chicken_dinner.pubgapi import PUBG
+import chicken_dinner
 
 api_key = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxZWUyNjk5MC0xOTJhLTAxM2MtMzU1Zi0xNjJhMTUxOTZjMzIiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNjkxNjE2NzMwLCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImlnbGVzcG9ydHNoZWxwIn0.e4hZTFjH81S0wvco7pRcKNwG5c1P09ewszickbSckek"
 pubg = PUBG(api_key, "steam")
@@ -102,8 +103,12 @@ victim.name
 victim.to_dict()
 # {'account_id': 'account.d9c2d8dc8c03412eadfa3e59c8f3c16a', 'health': 0, 'is_in_blue_zone': False, 'is_in_red_zone': False...
 
-for k, v in victim.items():
-    print(v )
+
+loc = victim.location
+x = loc.x
+y = loc.y
+z = loc.z
+print(x,y,z)
     #if len(k) == 'location':
         #print(v)
 # reference victim
