@@ -1,5 +1,4 @@
 from chicken_dinner.pubgapi import PUBG
-import chicken_dinner
 
 api_key = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxZWUyNjk5MC0xOTJhLTAxM2MtMzU1Zi0xNjJhMTUxOTZjMzIiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNjkxNjE2NzMwLCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImlnbGVzcG9ydHNoZWxwIn0.e4hZTFjH81S0wvco7pRcKNwG5c1P09ewszickbSckek"
 pubg = PUBG(api_key, "steam")
@@ -13,7 +12,7 @@ chocotaco = players[0]
 chocotaco.name
 # chocoTaco
 
-print(chocotaco.match_ids)
+print(len(chocotaco.match_ids))
 # ['e0b3cb15-929f-4b42-8873-68a8f9998d2b', 'dd25cf69-77f1-4791-9b14-657e904d3534'...
 
 chocotaco.id
@@ -61,7 +60,7 @@ match.url
 telemetry = match.get_telemetry(match.url)
 
 # All available event types
-print(telemetry.event_types())
+telemetry.event_types()
 # ['log_armor_destroy', 'log_care_package_land', 'log_care_package_spawn', 'log_game_state_periodic', 'log_heal'...
 
 # All specific events
@@ -80,13 +79,14 @@ telemetry.num_teams()
 # 50
 
 telemetry.platform
-kill_events = telemetry.filter_by("log_player_kill_v2")
+kill_events = telemetry.filter_by("log_player_take_damage")
 kill = kill_events[0]
+print(len(kill_events))
 
-kill.keys()
+print(kill.keys())
 # ['attack_id', 'killer', 'victim', 'assistant', 'dbno_id', 'damage_reason'...
 
-killer = kill.killer
+killer = kill.attacker
 killer.keys()
 # ['reference', 'name', 'team_id', 'health', 'location', 'ranking', 'account_id', 'is_in_blue_zone', 'is_in_red_zone', 'zone']
 
@@ -108,7 +108,13 @@ loc = victim.location
 x = loc.x
 y = loc.y
 z = loc.z
+attloc = killer.location
+ax = attloc.x
+ay = attloc.y
+az = attloc.z
+print(kill.damage)
 print(x,y,z)
+print(ax,ay,az)
     #if len(k) == 'location':
         #print(v)
 # reference victim
