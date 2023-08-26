@@ -1,6 +1,10 @@
+import os
 from chicken_dinner.pubgapi import PUBG
+from dotenv import load_dotenv
 
-api_key = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxZWUyNjk5MC0xOTJhLTAxM2MtMzU1Zi0xNjJhMTUxOTZjMzIiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNjkxNjE2NzMwLCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImlnbGVzcG9ydHNoZWxwIn0.e4hZTFjH81S0wvco7pRcKNwG5c1P09ewszickbSckek"
+load_dotenv()
+
+api_key = os.getenv('API_KEY')
 pubg = PUBG(api_key, "steam")
 
 # Creates a Players instance (iterable Player instances)
@@ -12,7 +16,7 @@ chocotaco = players[0]
 chocotaco.name
 # chocoTaco
 
-print(len(chocotaco.match_ids))
+print(chocotaco.match_ids[1])
 # ['e0b3cb15-929f-4b42-8873-68a8f9998d2b', 'dd25cf69-77f1-4791-9b14-657e904d3534'...
 
 chocotaco.id
@@ -20,7 +24,7 @@ chocotaco.id
 
 chocotaco.url
 # 'https://api
-match = pubg.match("292ec991-9d7d-482b-aef4-053dc101820b")
+match = pubg.match(chocotaco.match_ids[7])
 
 match.asset_id
 # '44b787fd-c153-11e9-8b6c-0a586467d436'
@@ -43,7 +47,7 @@ match.is_custom
 match.map_id
 # 'Baltic_Main'
 
-match.map_name
+#match.map_name
 # 'Erangel (Remastered)'
 
 match.rosters_player_names
